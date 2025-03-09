@@ -96,22 +96,25 @@
             const name = document.getElementById("name").value;
             const contact = document.getElementById("contact").value;
             const gamertag = document.getElementById("gamertag").value;
-            
-            fetch("https://script.google.com/macros/s/AKfycbwnTL3ihV1sZnwpPHSPKIxxhnXTJ-lGRCHUyrAie8ucQ7X-q8IR7QlbVvs_phHuH6Lb/exec", {
+
+            fetch("YOUR_NEW_GOOGLE_SCRIPT_WEB_APP_URL", {  // Replace with new URL
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, contact, gamertag })
             })
             .then(response => response.text())
             .then(data => {
-                if (data === "Success") {
+                if (data.trim() === "Success") {
                     alert("Will you be the Champion?! See you there!");
                     document.getElementById("signupForm").reset();
                 } else {
-                    alert("Error submitting. Please try again.");
+                    alert("Submission failed: " + data);
                 }
             })
-            .catch(error => console.error("Error:", error));
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Network error. Please check your connection.");
+            });
         });
     </script>
 </body>
