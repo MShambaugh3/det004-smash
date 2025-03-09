@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Smash Bros. Ultimate Tournament Signup</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('smash.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 450px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: red;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 SUPER SMASH BROS. ULTIMATE TOURNAMENT 🔥</h1>
+        <p><strong>📅 Date:</strong> Friday, March 14th &nbsp;&nbsp; <strong>⏳ Time:</strong> 2PM - 6PM</p>
+        <p><strong>📍 Location:</strong> CHB A112 - Freedom of Speech Lane</p>
+        <p><strong>✅ Check-In:</strong> 2:30PM &nbsp;&nbsp; <strong>🏆 Tournament Starts:</strong> 3PM</p>
+        
+        <h2>🕹️ Tournament Details</h2>
+       
+            <p><strong>Game Mode:</strong> 4-Player Free-For-All</p>
+            <p><strong>Lives (Stock):</strong> 3</p>
+            <p><strong>Stage Selection:</strong> Random (Any Map)</p>
+            <p><strong>Items:</strong> Low or Off (To be decided)</p>
+            <p><strong>Advancement:</strong> Top players move on to the next round</p>
+     
+
+        <h2>📜 Tournament Rules</h2>
+       
+            <p>⚡ <strong>No Stalling</strong> – No excessive running away.</p>
+            <p>⚡ <strong>No Cheating</strong> – Exploits result in disqualification.</p>
+            <p>⚡ <strong>Sudden Death Rule</strong> – Ties result in a 1-stock tiebreaker.</p>
+            <p>⚡ <strong>Be On Time</strong> – Missing your match means forfeit.</p>
+            <p>⚡ <strong>Respect All Players</strong> – Good sportsmanship required.</p>
+      
+        
+        <h2>🏆 Prizes & Recognition</h2>
+        <p>🥇 <strong>1st Place:</strong> Medal! + GIFTCARD + BRAGGING RIGHTS <br>
+           🥈 <strong>2nd Place:</strong> Medal! + BRAGGING RIGHTS </p>
+        
+        <h2>📢 SIGN UP NOW!</h2>
+        <form id="signupForm">
+            <label for="name">📜 Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="contact">📧 Contact (Optional):</label>
+            <input type="text" id="contact" name="contact">
+            
+            <label for="gamertag">🎮 Gamertag (Optional):</label>
+            <input type="text" id="gamertag" name="gamertag">
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+        <p><strong>📌 LIMITED SPOTS AVAILABLE – SIGN UP ASAP!</strong></p>
+        <p>For questions, contact: Maximus Shambaugh - A1 Director</p>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const contact = document.getElementById("contact").value;
+            const gamertag = document.getElementById("gamertag").value;
+            
+            fetch("https://script.google.com/macros/s/AKfycbwnTL3ihV1sZnwpPHSPKIxxhnXTJ-lGRCHUyrAie8ucQ7X-q8IR7QlbVvs_phHuH6Lb/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, contact, gamertag })
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === "Success") {
+                    alert("Will you be the Champion?! See you there!");
+                    document.getElementById("signupForm").reset();
+                } else {
+                    alert("Error submitting. Please try again.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
