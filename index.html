@@ -96,8 +96,8 @@
             const name = document.getElementById("name").value;
             const contact = document.getElementById("contact").value;
             const gamertag = document.getElementById("gamertag").value;
-
-            fetch("https://script.google.com/macros/s/AKfycbxNKKWQwAWSUy80hKqfv6BQXhowchmP4Xmga6DPpKBVxHbbKoYT0dCqEcqfiSuzj7N8/execL", {  // Replace with new URL
+            
+            fetch("https://script.google.com/macros/s/AKfycbwktCuAsgyFudf3JIOdr4kfdRRlMGK_4u94Ou1UfuxIKp9WMrHd26ssiN9gfSr-zRMH/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, contact, gamertag })
